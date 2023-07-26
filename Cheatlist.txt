@@ -1,0 +1,9 @@
+Abrindo arquivos FASTA:
+Salvar a lista de sequencias num arquivo .py
+abrir arquivo com with open('nome do arquivo','r') as variavel
+método .readlines(): retorna uma lista com todas as linhas do documento
+método .strip(): retira os \n no final de cada linha
+guardar numa função para ler arquivos
+fazer loop para guardar o readlines no return da função. usar método .strip() na hora de apensar
+chamar a fç com '' no nome do arquivo
+
