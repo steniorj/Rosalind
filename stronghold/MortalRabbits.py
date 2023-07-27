@@ -1,32 +1,48 @@
-def mortal_rabbits(num,m):
-    adulto_n_menos_2 = 0
-    adultn_1 = 1
-    adultn = 1
-    filhotesn = 1
-    filhotesn_1 = 0
-    filhotes_dict = {0: 0, 1: 1, 2: 0}
-    totaln = 2
-    dictLabel = m
-    if num == 1:
+def mortal_rabbits(month,m=3):
+    # iniciando variaveis para month = 1
+    adultosN = 0
+    filhotesN = 1
+    adultosN_1 = 0
+    filhotesN_1 = 0
+    totalrabbitsN = (adultosN + filhotesN)
+    
+    #preparando o dicionario com filhotes nascidos no mes atual
+    filhotesDict ={}
+    for v in range(-20,1):
+        filhotesDict[v] = 0
+    filhotesDict[1] = 1
+    print(filhotesDict)
+    #
+
+    if month == 1:
         return 1
-    if num == 2:
-        return 1
-    for itr in range(num - 2):
-        dictLabel = m
-        adultn = adultn_1 + filhotesn_1 - filhotes_dict[itr]
-        print(adultn,adultn_1,filhotesn_1,filhotes_dict)
-        filhotesn = adultn_1
-        print(filhotesn,'filhotesn')
-        filhotes_dict[itr+3] = filhotesn
-        totaln = adultn + filhotesn
-        print(totaln,'totaln')
-        adulto_n_menos_2 = adultn_1
-        adultn_1 = adultn
-        filhotesn_1 = filhotesn
-        print()
 
+    #var inicia com 0
+    for var in range(month-1):
+        print('var:',var)
+        #setar variaveis para month atual:
+        
+        #variavel para calcular NFn-3
+        filhotesIndex = (var+2)-m
+        
+        #trasferindo N para N-1
+        adultosN_1 = adultosN
+        filhotesN_1 = filhotesN
+        print(adultosN_1,'adultosN_1')
+        print(filhotesN_1,'filhotesN_1')
 
+        #calculando novo N
+        adultosN = (adultosN_1 + filhotesN_1) - filhotesDict[filhotesIndex]
+        filhotesN = adultosN_1
+        print(adultosN,'adultosN')
+        print(filhotesN,'filhotesN')
+        totalrabbitsN = adultosN + filhotesN
+        print(totalrabbitsN,'totalrabbitsN')
 
-    return totaln
+        #atualizar dicionario com filhotes nascidos nesse mes
+        filhotesDict[var+2] = adultosN_1
+        print(filhotesDict)
 
-print(mortal_rabbits(7),'disc')
+    return totalrabbitsN
+
+print(mortal_rabbits(90,m=16),'print return var')
